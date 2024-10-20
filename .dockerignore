@@ -3,3 +3,6 @@ build
 .dockerignore
 Dockerfile
 docker-compose.yml
+.gitignore
+.gitattributes
+.git
