@@ -1,13 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react'
+import { createRoot } from 'react-dom/client';
 
+import Layout from './components/layout'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />,
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+import './stylesheets/index.scss'
+
+document.body.innerHTML = '<div id="root"></div>';
+const root = createRoot(document.getElementById('root'));
+root.render(<Layout />);
