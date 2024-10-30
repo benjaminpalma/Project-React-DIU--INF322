@@ -10,8 +10,6 @@ dist
 
 # Docker
 docker-compose.override.yml
-.dockerignore
-Dockerfile
 
 # Dependency directories
 /.pnp

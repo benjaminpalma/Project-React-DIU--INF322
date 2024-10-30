@@ -1,20 +1,22 @@
-# Usa una imagen oficial de Node.js
-FROM node:16
+# Usa la imagen oficial de Node.js como base
+FROM node:18-alpine
 
-# Establecer el directorio de trabajo dentro del contenedor
+# Crear el directorio de la app y establecerlo como directorio de trabajo
 WORKDIR /app
 
-# Copiar los archivos de configuración de dependencias
-COPY package*.json ./
+# Crear el proyecto base de React con npx y configura Tailwind CSS
+RUN npx create-react-app . && \
+    npm install -D tailwindcss postcss autoprefixer && \
+    npx tailwindcss init -p
 
-# Instalar las dependencias del proyecto
-RUN npm install
+# Configurar el archivo de Tailwind CSS
+RUN echo 'module.exports = { content: [ "./src/**/*.{js,jsx,ts,tsx}" ], theme: { extend: {} }, plugins: [] }' > tailwind.config.js
 
-# Copiar el resto del código fuente al contenedor
-COPY . .
+# Reemplazar el contenido del archivo index.css para importar Tailwind CSS
+RUN echo '@tailwind base;\n@tailwind components;\n@tailwind utilities;' > src/index.css
 
 # Exponer el puerto 3000
 EXPOSE 3000
 
-# Comando por defecto para iniciar la aplicación
+# Comando para iniciar el proyecto
 CMD ["npm", "start"]

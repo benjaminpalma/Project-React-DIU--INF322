@@ -1,13 +1,12 @@
 services:
-  react-app:
+  app:
     build:
       context: .
+      dockerfile: Dockerfile
     ports:
       - '3000:3000'
     volumes:
-      - './src:/app/src'  # Monta el directorio src para sincronización
-      - './public:/app/public'
-      - './package.json:/app/package.json'
+      - .:/app
+      - /app/node_modules
     environment:
-      - CHOKIDAR_USEPOLLING=true  # Activa el polling para detectar cambios
-    command: npm start
+      - CHOKIDAR_USEPOLLING=true

@@ -1,8 +1,0 @@
-html, body {
-  margin: 0; /* Elimina márgenes */
-}
-
-#root {
-  height: 100%; /* El div root ocupa el 100% del alto */
-  width: 100%; /* El div root ocupa el 100% del ancho */
-}

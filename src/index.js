@@ -1,10 +1,14 @@
-import React from 'react'
-import { createRoot } from 'react-dom/client';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css'; // Asegúrate de que este archivo también exista
+import App from './App'; // Importa tu componente principal
 
-import Layout from './components/layout'
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
 
-import './stylesheets/index.scss'
-
-document.body.innerHTML = '<div id="root"></div>';
-const root = createRoot(document.getElementById('root'));
-root.render(<Layout />);
+// Si deseas medir el rendimiento de tu aplicación, puedes enviar el resultado a un servicio de registro
+reportWebVitals();

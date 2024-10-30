@@ -1,8 +1,19 @@
+# Ignorar la carpeta de dependencias de Node.js
 node_modules
+
+# Ignorar la carpeta de salida de producción
 build
+
+# Ignorar archivos de configuración de Docker
 .dockerignore
 Dockerfile
 docker-compose.yml
+
+# Ignorar archivos de configuración de Git
+.git
 .gitignore
 .gitattributes
-.git
+
+# Ignorar los archivos de entorno
+.env
+.env.local
