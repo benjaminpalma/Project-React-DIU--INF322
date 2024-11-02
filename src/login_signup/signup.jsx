@@ -1,5 +1,5 @@
 import React from 'react';
-import "./crear.css";
+import "./estilo.css";
 
 const Signup = () => {
   return (
