@@ -1,28 +1,28 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React from 'react';
+import { NavLink } from 'react-router-dom'; // Usando NavLink de React Router
 
-export const NavBar = () => {
-  const navLinkClass = ({ isActive }) => {
-    const classes = ['nav-bar__link']
-    if (isActive) classes.push('nav-bar__link--active')
-    return classes.join(' ')
-  }
-  return (
-    <nav className='nav-bar'>
-      <NavLink
-        className={navLinkClass}
-        to='/'
-      >
-        Inicio
-      </NavLink>
-      <NavLink
-        className={navLinkClass}
-        to='/lightbulb'
-      >
-        Ampolleta
-      </NavLink>
-    </nav>
-  )
+const navLinkClass = ({ isActive }) => {
+  const classes = ['navbar__link'];
+  if (isActive) classes.push('navbar__link--active');
+  return classes.join(' ');
 }
- 
-export default NavBar
+
+const NavBar = () => {
+  return (
+    <nav className="navbar">
+      <div className="navbar__logo">
+        <div className="navbar__logo-text">Logo</div>
+      </div>
+      <div className="navbar__links">
+        <NavLink to="/hobbies" className={navLinkClass}>Hobbies</NavLink>
+        <NavLink to="/comunidades" className={navLinkClass}>Comunidades</NavLink>
+        <NavLink to="/buscador" className={navLinkClass}>Buscador</NavLink>
+      </div>
+      <div className="navbar__profile">
+        <button className="navbar__profile-button">Perfil</button>
+      </div>
+    </nav>
+  );
+}
+
+export default NavBar;
