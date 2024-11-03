@@ -1,6 +1,6 @@
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-
+import { useNavigate } from 'react-router-dom';
 const navigation = [
   { name: 'Hobbies', href: '/hobbies', current: true },
   { name: 'Communities', href: '/communities', current: false },
@@ -11,6 +11,13 @@ function classNames(...classes) {
 }
 
 export default function Example() {
+  const navigate = useNavigate(); // Define navigate para redirección
+
+  // Función para manejar el cierre de sesión
+  const handleSignOut = () => {
+    // Aquí podrías añadir lógica para limpiar datos de sesión si es necesario
+    navigate('/login'); // Redirige al formulario de inicio de sesión
+  };
   return (
     <Disclosure as="nav" className="bg-gray-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -84,7 +91,7 @@ export default function Example() {
                     href="/profile"
                     className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none"
                   >
-                    Your Profile
+                    Mi perfil
                   </a>
                 </MenuItem>
                 <MenuItem>
@@ -92,16 +99,16 @@ export default function Example() {
                     href="/settings"
                     className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none"
                   >
-                    Settings
+                    Ajustes
                   </a>
                 </MenuItem>
                 <MenuItem>
-                  <a
-                    href="signout"
-                    className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none"
-                  >
-                    Sign out
-                  </a>
+                <button
+                  onClick={handleSignOut} // Llama a la función handleSignOut en vez de un enlace
+                  className="block w-full px-4 py-2 text-left text-sm text-gray-700"
+                >
+                  Cerrar sesión
+                </button>
                 </MenuItem>
               </MenuItems>
             </Menu>

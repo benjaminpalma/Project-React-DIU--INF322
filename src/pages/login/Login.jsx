@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 /*
   This example requires some changes to your config:
   
@@ -31,7 +32,7 @@ export default function Example() {
             className="mx-auto h-10 w-auto"
           />
           <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
-            Sign in to your account
+            Hola de nuevo, ingresa tu cuenta:
           </h2>
         </div>
 
@@ -39,7 +40,7 @@ export default function Example() {
           <form action="#" method="POST" className="space-y-6">
             <div>
               <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
-                Email address
+                Correo electrónico
               </label>
               <div className="mt-2">
                 <input
@@ -56,11 +57,11 @@ export default function Example() {
             <div>
               <div className="flex items-center justify-between">
                 <label htmlFor="password" className="block text-sm/6 font-medium text-gray-900">
-                  Password
+                  Contraseña
                 </label>
                 <div className="text-sm">
                   <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                    Forgot password?
+                    ¿Olvidaste tu contraseña?
                   </a>
                 </div>
               </div>
@@ -81,16 +82,16 @@ export default function Example() {
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Sign in
+                Ingresar
               </button>
             </div>
           </form>
 
           <p className="mt-10 text-center text-sm/6 text-gray-500">
-            Not a member?{' '}
-            <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-              Start a 14 day free trial
-            </a>
+            ¿No estas registrado?{' '}
+            <Link to="/signup" className="font-semibold text-indigo-600 hover:text-indigo-500">
+              Crea una cuenta
+            </Link>
           </p>
         </div>
       </div>

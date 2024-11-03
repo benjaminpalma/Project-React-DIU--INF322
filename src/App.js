@@ -2,10 +2,11 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Communities from './pages/communities/Communities';
 import HobbiesPage from './pages/hobbies/HobbiesPage';
+import NewHobby from './pages/nuevohobbie/NewHobby';
 import HomePage from './pages/HomePage';
 import Navbar from './components/Navbar';
 import Login from './pages/login/Login';
-//import Signup from './pages/login/Signup';
+import Signup from './pages/login/Signup';
 //import Profile from './pages/profile/Profile';
 
 const App = () => {
@@ -20,9 +21,10 @@ const App = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/communities" element={<Communities />} />
             <Route path="/hobbies" element={<HobbiesPage />} />
-	    <Route path="/login" element={<Login />} />
-	  {/*<Route path="/signup" element={<Signup />} />
-            <Route path="/profile" element={<Profile />} /> */}
+            <Route path="/new-hobby" element={<NewHobby />} />
+	          <Route path="/login" element={<Login />} />
+	          <Route path="/signup" element={<Signup />} />
+            {/*<Route path="/profile" element={<Profile />} /> */}
           </Routes>
         </main>
       </div>
