@@ -1,10 +1,7 @@
-import React from 'react'
-import { createRoot } from 'react-dom/client';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css'; // Asegúrate de que este archivo esté importado
+import App from './App';
 
-import Layout from './components/layout'
+ReactDOM.render(<App />, document.getElementById('root'));
 
-import './stylesheets/index.scss'
-
-document.body.innerHTML = '<div id="root"></div>';
-const root = createRoot(document.getElementById('root'));
-root.render(<Layout />);
