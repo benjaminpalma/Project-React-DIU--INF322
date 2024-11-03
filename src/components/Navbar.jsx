@@ -1,13 +1,14 @@
-import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
+import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useNavigate } from 'react-router-dom';
+
 const navigation = [
   { name: 'Hobbies', href: '/hobbies', current: true },
   { name: 'Communities', href: '/communities', current: false },
-]
+];
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(' ');
 }
 
 export default function Example() {
@@ -15,15 +16,19 @@ export default function Example() {
 
   // Función para manejar el cierre de sesión
   const handleSignOut = () => {
-    // Aquí podrías añadir lógica para limpiar datos de sesión si es necesario
     navigate('/login'); // Redirige al formulario de inicio de sesión
   };
+
+  // Nueva función para manejar la navegación a la configuración
+  const handleSettings = () => {
+    navigate('/settings'); // Redirige al componente de configuración
+  };
+
   return (
     <Disclosure as="nav" className="bg-gray-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-            {/* Mobile menu button*/}
             <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
               <span className="absolute -inset-0.5" />
               <span className="sr-only">Open main menu</span>
@@ -33,13 +38,13 @@ export default function Example() {
           </div>
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex flex-shrink-0 items-center">
-          <a href="/">   
-	  <img
-                alt="Your Company"
-                src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
-                className="h-8 w-auto"
-              />
-	  </a>
+              <a href="/">
+                <img
+                  alt="Your Company"
+                  src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
+                  className="h-8 w-auto"
+                />
+              </a>
             </div>
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
@@ -95,20 +100,20 @@ export default function Example() {
                   </a>
                 </MenuItem>
                 <MenuItem>
-                  <a
-                    href="/settings"
+                  <button
+                    onClick={handleSettings} // Cambiado a función para navegar
                     className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none"
                   >
                     Ajustes
-                  </a>
+                  </button>
                 </MenuItem>
                 <MenuItem>
-                <button
-                  onClick={handleSignOut} // Llama a la función handleSignOut en vez de un enlace
-                  className="block w-full px-4 py-2 text-left text-sm text-gray-700"
-                >
-                  Cerrar sesión
-                </button>
+                  <button
+                    onClick={handleSignOut} // Llama a la función handleSignOut en vez de un enlace
+                    className="block w-full px-4 py-2 text-left text-sm text-gray-700"
+                  >
+                    Cerrar sesión
+                  </button>
                 </MenuItem>
               </MenuItems>
             </Menu>
@@ -135,5 +140,5 @@ export default function Example() {
         </div>
       </DisclosurePanel>
     </Disclosure>
-  )
+  );
 }

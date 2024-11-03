@@ -8,8 +8,8 @@ import HomePage from './pages/HomePage';
 import Navbar from './components/Navbar';
 import Login from './pages/login/Login';
 import Signup from './pages/login/Signup';
-//import Profile from './pages/profile/Profile';
 
+import Settings from './pages/profile/ajuste';
 const App = () => {
   return (
     <Router>
@@ -25,7 +25,8 @@ const App = () => {
             <Route path="/nuevo-hobbie" element={<NewHobby />} />
 	          <Route path="/login" element={<Login />} />
 	          <Route path="/signup" element={<Signup />} />
-            {/*<Route path="/profile" element={<Profile />} /> */}
+            <Route path="/settings" element={<Settings />} />
+           
           </Routes>
         </main>
       </div>
