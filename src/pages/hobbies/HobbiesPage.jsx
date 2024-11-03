@@ -4,12 +4,12 @@ const HobbiesPage = () => {
   const navigate = useNavigate();
 
   const hobbies = [
-    { id: 1, title: "Heading", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." },
-    { id: 2, title: "Heading", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." },
+    { id: 1, title: "Hobby 1", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." },
+    { id: 2, title: "Hobby 2", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." },
   ];
 
   const handleAddHobby = () => {
-    navigate('/nuevo-hobbie');
+    navigate('/nuevo-hobbie'); // Asegúrate de que esta ruta coincida con tu App.js
   };
 
   return (
@@ -44,4 +44,3 @@ const AddButton = ({ onClick }) => (
 );
 
 export default HobbiesPage;
-

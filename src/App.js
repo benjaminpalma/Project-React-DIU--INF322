@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Communities from './pages/communities/Communities';
 import HobbiesPage from './pages/hobbies/HobbiesPage';
 import NewHobby from './pages/nuevohobbie/NewHobby';
+
 import HomePage from './pages/HomePage';
 import Navbar from './components/Navbar';
 import Login from './pages/login/Login';
@@ -21,7 +22,7 @@ const App = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/communities" element={<Communities />} />
             <Route path="/hobbies" element={<HobbiesPage />} />
-            <Route path="/new-hobby" element={<NewHobby />} />
+            <Route path="/nuevo-hobbie" element={<NewHobby />} />
 	          <Route path="/login" element={<Login />} />
 	          <Route path="/signup" element={<Signup />} />
             {/*<Route path="/profile" element={<Profile />} /> */}
