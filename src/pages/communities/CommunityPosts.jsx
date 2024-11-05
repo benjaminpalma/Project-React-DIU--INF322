@@ -1,6 +1,6 @@
 // CommunityPage.js
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link  } from 'react-router-dom';
 import communities from './CommunitieData';
 
 const CommunityPage = () => {
@@ -26,7 +26,7 @@ const CommunityPage = () => {
         <p className="text-gray-700 mb-6">{community.description}</p>
         
         {/* Datos del moderador */}
-        <div className="flex items-center mb-6">
+        <Link to={`/profile/${community.moderator.name.replace(/\s+/g, '-').toLowerCase()}`} className="flex items-center mb-6">
           <img
             src={community.moderator.imageUrl}
             alt={community.moderator.name}
@@ -36,7 +36,7 @@ const CommunityPage = () => {
             <p className="font-semibold">{community.moderator.name}</p>
             <p className="text-gray-500">{community.moderator.role} (Moderador)</p>
           </div>
-        </div>
+        </Link>
 
         {/* Información adicional de la comunidad */}
         <div className="flex items-center justify-between mb-4">
