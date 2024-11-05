@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PostCard from './PostCard';
 import posts from './PostData';
+import Navbar from '../../components/Navbar'
 
 const Communities = () => {
   const [searchText, setSearchText] = useState('');
@@ -37,6 +38,8 @@ const Communities = () => {
   };
 
   return (
+    <>
+    <Navbar />
     <div className="max-w-7xl mx-auto p-6 bg-gray-100">
       {/* Barra superior ajustada */}
       <div className="fixed top-16 left-0 right-0 z-10 bg-white shadow border-b border-gray-200 py-4 px-6">
@@ -115,6 +118,7 @@ const Communities = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

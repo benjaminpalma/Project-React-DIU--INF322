@@ -14,7 +14,7 @@ import NotificationsPage from './pages/alarma/NotificationsPage';
 import NewHobby from './pages/hobbies/NewHobby';
 
 //import HomePage from './pages/HomePage';
-import Navbar from './components/Navbar';
+// import Navbar from './components/Navbar';
 import Login from './pages/login/Login';
 import Signup from './pages/login/Signup';
 import PasswordRecovery from './pages/login/PasswordRecovery';
@@ -25,7 +25,7 @@ const App = () => {
     <Router>
       <div className="flex flex-col min-h-screen">
 	      <header className="fixed inset-x-0 top-0 z-50 bg-white">
-          <Navbar />
+          {/* <Navbar /> */}
         </header>
         <main className="flex-1 p-6 mt-16 bg-gray-100">
           <Routes>
