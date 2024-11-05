@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Navbar from '../../components/Navbar';
 
 const NewHobby = () => {
   const [title, setTitle] = useState('');
@@ -23,6 +24,8 @@ const NewHobby = () => {
   };
 
   return (
+    <>
+    <Navbar />
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <h2 className="text-center text-2xl font-bold tracking-tight text-gray-900">
@@ -93,6 +96,7 @@ const NewHobby = () => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 

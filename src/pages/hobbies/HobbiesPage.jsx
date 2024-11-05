@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../../components/Navbar';
 
 const HobbiesPage = () => {
   const navigate = useNavigate();
@@ -13,6 +14,8 @@ const HobbiesPage = () => {
   };
 
   return (
+    <>
+    <Navbar />
     <div className="flex flex-col items-center px-6 py-12 lg:px-8 min-h-screen bg-gray-50">
       <h2 className="text-2xl font-bold tracking-tight text-gray-900 mb-8">Mis Hobbies</h2>
       
@@ -24,6 +27,7 @@ const HobbiesPage = () => {
 
       <AddButton onClick={handleAddHobby} />
     </div>
+    </>
   );
 };
 
