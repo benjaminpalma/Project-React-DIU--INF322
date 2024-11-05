@@ -27,7 +27,7 @@ const App = () => {
 	      <header className="fixed inset-x-0 top-0 z-50 bg-white">
           <Navbar />
         </header>
-        <main className="flex-1 p-6 mt-16">
+        <main className="flex-1 p-6 mt-16 bg-gray-100">
           <Routes>
             <Route path="/" element={<Communities />} />
             <Route path="/communities" element={<Communities />} />
@@ -38,7 +38,7 @@ const App = () => {
             <Route path="/signup" element={<Signup />} />
             <Route path="/recover-password" element={<PasswordRecovery />} />
             <Route path="/perfil" element={<UserProfile />} />
-            <Route path="/thread/:id" element={<ThreadPage />} />
+            <Route path="/thread/:postId" element={<ThreadPage />} />
           </Routes>
         </main>
       </div>

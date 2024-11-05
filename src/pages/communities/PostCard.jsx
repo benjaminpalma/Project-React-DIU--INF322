@@ -29,7 +29,7 @@ const PostCard = ({ post }) => {
   };
 
   const handleNavigateToThread = () => {
-    navigate(`/hilo/${post.id}`); // Redirige a la página del hilo usando el ID del post
+    navigate(`/thread/${post.id}`); // Redirige a la página del hilo usando el ID del post
   };
 
   const shareToSocial = (platform) => {
