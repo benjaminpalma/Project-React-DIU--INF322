@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from 'react-router-dom';
-import posts from './PostData';
+import { Link } from 'react-router-dom';
 
 const PostCard = ({ post }) => {
   const navigate = useNavigate();
@@ -10,7 +10,8 @@ const PostCard = ({ post }) => {
   const [galardonado, setGalardonado] = useState(false);
   const [medalType, setMedalType] = useState(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isShareOpen, setIsShareOpen] = useState(false); // Estado para visibilidad del menú de compartir
+  const [isShareOpen, setIsShareOpen] = useState(false);
+  const userProfileLink = `/profile/${post.author.name.replace(/\s+/g, '-').toLowerCase()}`;
 
   const handleLike = () => {
     setLiked(!liked);
@@ -29,11 +30,11 @@ const PostCard = ({ post }) => {
   };
 
   const handleNavigateToThread = () => {
-    navigate(`/thread/${post.id}`); // Redirige a la página del hilo usando el ID del post
+    navigate(`/communities/${post.category}/${post.id}`); // Redirige a la página del hilo usando el ID del post
   };
 
   const shareToSocial = (platform) => {
-    const shareUrl = `https://www.example.com${post.href}`;
+    const shareUrl = `https://www.example.com`;
     let url = '';
 
     switch (platform) {
@@ -63,32 +64,34 @@ const PostCard = ({ post }) => {
     >
       {/* Info */}
       <div className="flex items-center gap-x-4 text-xs">
-        <img
-          alt={post.author.name}
-          src={post.author.imageUrl}
-          className="h-10 w-10 rounded-full bg-gray-50 cursor-pointer"
-          onClick={(e) => {
-            e.stopPropagation();
-            window.location.href = `/perfil/${post.author.name.replace(/\s+/g, '-').toLowerCase()}`;
-          }}
-        />
-        <div className="text-sm" onClick={(e) => {
-            e.stopPropagation();
-            window.location.href = `/perfil/${post.author.name.replace(/\s+/g, '-').toLowerCase()}`;
-          }}>
+        <Link 
+          to={userProfileLink}
+          onClick={(e) => e.stopPropagation()}
+          className="flex items-center z-5">
+          <img
+            alt={post.author.name}
+            src={post.author.imageUrl}
+            className="h-10 w-10 rounded-full bg-gray-50 cursor-pointer"
+          />
+        </Link>
+        <Link
+        to={userProfileLink}
+        onClick={(e) => e.stopPropagation()}
+        className="text-sm z-5">
           <p className="font-semibold text-gray-900">{post.author.name}</p>
           <p className="text-gray-600">{post.author.role}</p>
-        </div>
+        </Link>
         <time dateTime={post.datetime} className="text-gray-500">
           {post.date}
         </time>
-        <a
-          href={post.category.href}
-          onClick={(e) => e.stopPropagation()}
+        <Link
+          to={`/communities/${post.category}`}  // Asegúrate de que post.category tenga el valor correcto
+          onClick={(e) => e.stopPropagation()} // Este evita que el evento de clic se propague
           className="relative z-5 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
         >
-          {post.category.title}
-        </a>
+          {/* Aquí puedes agregar el texto que quieres que aparezca en el enlace */}
+          {post.category} {/* Asegúrate de que `name` sea una propiedad de la categoría */}
+        </Link>
       </div>
 
       {/* Content */}

@@ -7,18 +7,21 @@ import { faTwitter, faFontAwesome } from '@fortawesome/free-brands-svg-icons'
 
 library.add(fas, faTwitter)
 
+import Navbar from './components/Navbar';
 import Communities from './pages/communities/Communities';
 import ThreadPage from './pages/communities/Thread';
+import CommunityPosts from './pages/communities/CommunityPosts';
+import UserProfile from './pages/communities/UserProfile';
+
 import HobbiesPage from './pages/hobbies/HobbiesPage';
 import NotificationsPage from './pages/alarma/NotificationsPage';
 import NewHobby from './pages/hobbies/NewHobby';
 
 //import HomePage from './pages/HomePage';
-import Navbar from './components/Navbar';
 import Login from './pages/login/Login';
 import Signup from './pages/login/Signup';
 import PasswordRecovery from './pages/login/PasswordRecovery';
-import UserProfile from './pages/profile/perfil';
+import Profile from './pages/profile/perfil'
 
 const App = () => {
   return (
@@ -37,8 +40,10 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/recover-password" element={<PasswordRecovery />} />
-            <Route path="/perfil" element={<UserProfile />} />
-            <Route path="/thread/:postId" element={<ThreadPage />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/communities/:category" element={<CommunityPosts/>} />
+            <Route path="/communities/:category/:postId" element={<ThreadPage />} />
+            <Route path="/profile/:username" element={<UserProfile />} />
           </Routes>
         </main>
       </div>

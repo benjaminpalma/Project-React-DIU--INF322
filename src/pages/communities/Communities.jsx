@@ -61,7 +61,7 @@ const Communities = () => {
       </div>
 
       {/* Listado de comunidades */}
-      <div className="mt-20 mx-auto grid max-w-2xl grid-cols-1 gap-y-8 border-t border-gray-200 pt-10 sm:mt-24 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-1">
+      <div className="mt-5 mx-auto grid max-w-2xl grid-cols-1 gap-y-8 pt-10 sm:mt-20 sm:pt-10 lg:mx-0 lg:max-w-none lg:grid-cols-1">
         {posts.map((post) => (
           <PostCard key={post.id} post={post} />
         ))}

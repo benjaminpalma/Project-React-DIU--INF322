@@ -23,7 +23,7 @@ export default function Example() {
   };
 
   const handleProfileClick = () => {
-    navigate('/perfil'); // Navigate to the user profile component path
+    navigate('/profile'); // Navigate to the user profile component path
   };
 
   return (
