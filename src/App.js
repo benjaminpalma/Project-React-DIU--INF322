@@ -8,9 +8,10 @@ import { faTwitter, faFontAwesome } from '@fortawesome/free-brands-svg-icons'
 library.add(fas, faTwitter)
 
 import Communities from './pages/communities/Communities';
+import ThreadPage from './pages/communities/Thread';
 import HobbiesPage from './pages/hobbies/HobbiesPage';
 import NotificationsPage from './pages/alarma/NotificationsPage';
-import NewHobby from './pages/nuevohobbie/NewHobby';
+import NewHobby from './pages/hobbies/NewHobby';
 
 //import HomePage from './pages/HomePage';
 import Navbar from './components/Navbar';
@@ -37,6 +38,7 @@ const App = () => {
             <Route path="/signup" element={<Signup />} />
             <Route path="/recover-password" element={<PasswordRecovery />} />
             <Route path="/perfil" element={<UserProfile />} />
+            <Route path="/thread/:id" element={<ThreadPage />} />
           </Routes>
         </main>
       </div>
