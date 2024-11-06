@@ -1,103 +1,119 @@
-import { useState } from 'react';
-import Navbar from '../../components/Navbar';
+import React, { useState } from 'react';
+import Navbar from '../../components/Navbar'
 
-const NewHobby = () => {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+const NuevoHobbiePage = () => {
+  const [hobbyName, setHobbyName] = useState("");
+  const [hobbyDescription, setHobbyDescription] = useState("");
   const [image, setImage] = useState(null);
-  const [achievements, setAchievements] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [isObjective, setIsObjective] = useState(true);
 
-  const handleAddAchievement = () => {
-    const newAchievement = prompt("Describe el logro:");
-    if (newAchievement) {
-      setAchievements([...achievements, newAchievement]);
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImage(URL.createObjectURL(file));
     }
   };
 
-  const handleImageUpload = (e) => {
-    setImage(URL.createObjectURL(e.target.files[0]));
+  const handleAddClick = () => {
+    setShowModal(true);
   };
 
-  const handleSubmit = () => {
-    // Aquí se manejaría el envío o almacenamiento del nuevo hobbie
-    console.log({ title, description, image, achievements });
+  const handleAccept = () => {
+    setShowModal(false);
   };
+
+  const [searchText, setSearchText] = useState('');
+
+  // Función para mostrar el modal de "Agregar Comunidad"
+  const handleAddCommunity = () => {
+    setShowModal(true);
+  };
+
+  // Función para manejar el cambio en el campo de búsqueda
+  const handleSearchChange = (event) => {
+    const inputText = event.target.value;
+    setSearchText(inputText);
+  };
+
+  // Función para buscar comunidades
+  const handleSearch = () => {
+    alert(`Buscando comunidad: '${searchText}'`);
+  };
+
+  const handleNavClick = (type) => {
+    setIsObjective(type === 'objetivos');
+  };
+
+  // Nuevo navbar
+  const NuevoNavBar = (
+    <div className="fixed top-16 left-0 right-0 z-10 bg-white shadow border-b border-gray-200 py-4 px-6">
+      <div className="space-x-4">
+          <button className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500" onClick={() => handleNavClick('objetivos')}>Objetivos</button>
+          <button className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500" onClick={() => handleNavClick('logros')}>Logros</button>
+      </div>
+    </div>
+  );
 
   return (
     <>
-    <Navbar />
-    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h2 className="text-center text-2xl font-bold tracking-tight text-gray-900">
-          Crear un nuevo hobbie
-        </h2>
-      </div>
-      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form className="space-y-6">
-          <div>
-            <label className="block text-sm font-medium text-gray-900">
-              Nombre del Hobbie
-            </label>
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              className="mt-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
-            />
+    <div className="min-h-screen flex flex-col bg-gray-100">
+      <Navbar/>
+      {NuevoNavBar }
+      <main className="flex-1 p-20">
+        <div className="bg-white rounded-lg shadow-md p-6">
+          <div className="flex gap-6">
+            <div className="flex-shrink-0">
+              <label className="cursor-pointer">
+                <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
+                <img src={image || "https://via.placeholder.com/100"} alt="Cargar imagen" className="w-32 h-32 object-cover rounded-md" />
+                <span className="block mt-2 text-sm text-gray-500">Cargar imagen</span>
+              </label>
+            </div>
+            <div className="flex-grow">
+              <input 
+                type="text" 
+                className="w-full p-2 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+                placeholder="Nombre del Hobbie" 
+                value={hobbyName} 
+                onChange={(e) => setHobbyName(e.target.value)}
+              />
+              <textarea 
+                className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+                placeholder="Describe tu nuevo hobbie!" 
+                value={hobbyDescription} 
+                onChange={(e) => setHobbyDescription(e.target.value)}
+              />
+            </div>
           </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-900">
-              Descripción
-            </label>
-            <textarea
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              className="mt-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
-            />
+        </div>
+        <p className="mt-4 text-center text-gray-600">
+          {isObjective ? "Aún no has creado un objetivo, presiona en el botón de abajo para agregar uno nuevo!" : "Aún no has creado un Logro, presiona en el botón de abajo para agregar uno nuevo!"}
+        </p>
+        <div className="my-6 border-t border-gray-300"></div>
+        <button className="w-12 h-12 bg-indigo-600 text-white rounded-full text-2xl flex items-center justify-center mx-auto hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500" onClick={handleAddClick}>+</button>
+
+        {showModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+            <div className="bg-white rounded-lg p-6 shadow-lg w-80">
+              <h2 className="text-xl font-semibold mb-4">{isObjective ? "Nuevo Objetivo" : "Nuevo Logro"}</h2>
+              <label className="block mb-4">
+                <span className="block text-sm font-medium text-gray-700 mb-1">{isObjective ? "Objetivo:" : "Logro:"}</span>
+                <input type="text" className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder={`Nombre del ${isObjective ? 'objetivo' : 'logro'}`} />
+              </label>
+              <label className="block mb-4">
+                <span className="block text-sm font-medium text-gray-700 mb-1">Tarea:</span>
+                <input type="text" className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Nombre tarea" />
+              </label>
+              <button className="w-10 h-10 bg-indigo-600 text-white rounded-full text-lg flex items-center justify-center mb-4 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500">+</button>
+              <button className="w-full bg-indigo-600 text-white py-2 rounded-md text-sm font-medium hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500" onClick={handleAccept}>Aceptar</button>
+            </div>
           </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-900">
-              Imagen del Hobbie
-            </label>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageUpload}
-              className="mt-2 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
-            />
-            {image && <img src={image} alt="Hobbie" className="mt-4 w-full rounded-md" />}
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-900">
-              Logros
-            </label>
-            <button
-              type="button"
-              onClick={handleAddAchievement}
-              className="mt-2 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500"
-            >
-              Agregar logro
-            </button>
-            <ul className="mt-4 list-disc pl-5">
-              {achievements.map((ach, index) => (
-                <li key={index} className="text-sm text-gray-700">{ach}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <button
-              type="button"
-              onClick={handleSubmit}
-              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500"
-            >
-              Crear Hobbie
-            </button>
-          </div>
-        </form>
-      </div>
+        )}
+      </main>
     </div>
     </>
   );
 };
 
-export default NewHobby;
+export default NuevoHobbiePage;
