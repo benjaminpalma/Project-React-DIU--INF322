@@ -13,8 +13,10 @@ import ThreadPage from './pages/communities/Thread';
 import CommunityPosts from './pages/communities/CommunityPosts';
 import UserProfile from './pages/communities/UserProfile';
 
-import HobbiesPage from './pages/hobbies/HobbiesPage';
 import NotificationsPage from './pages/alarma/NotificationsPage';
+
+import HobbiesPage from './pages/hobbies/HobbiesPage';
+import HobbyX from './pages/hobbies/HobbyX';
 import NewHobby from './pages/hobbies/NewHobby';
 
 //import HomePage from './pages/HomePage';
@@ -35,8 +37,9 @@ const App = () => {
             <Route path="/" element={<Communities />} />
             <Route path="/communities" element={<Communities />} />
             <Route path="/hobbies" element={<HobbiesPage />} />
-            <Route path="/notifications" element={<NotificationsPage />} />
+            <Route path="/hobbies/:hobbyId" element={<HobbyX />}/>
             <Route path="/nuevo-hobbie" element={<NewHobby />} />
+            <Route path="/notifications" element={<NotificationsPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/recover-password" element={<PasswordRecovery />} />

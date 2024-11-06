@@ -7,8 +7,8 @@ const HobbiesPage = () => {
   const navigate = useNavigate();
 
   const hobbies = [
-    { id: 1, title: "Hobby 1", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", link:'/hobbie' },
-    { id: 2, title: "Hobby 2", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", link:'/hobbie' },
+    { id: 1, title: "Hobby 1", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." },
+    { id: 2, title: "Hobby 2", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." },
   ];
 
   const handleAddHobby = () => {
@@ -23,7 +23,7 @@ const HobbiesPage = () => {
       
       <div className="w-full max-w-2xl space-y-6">
         {hobbies.map(hobby => (
-          <HobbyCard key={hobby.id} title={hobby.title} description={hobby.description} link={hobby.link + '-' + hobby.id } />
+          <HobbyCard key={hobby.id} title={hobby.title} description={hobby.description} link={'/hobbies/' + hobby.id } />
         ))}
       </div>
 
