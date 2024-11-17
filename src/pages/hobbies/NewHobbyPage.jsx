@@ -6,28 +6,12 @@ import { v4 as uuidv4 } from 'uuid';
 const NuevoHobbiePage = () => {
   const [hobbyName, setHobbyName] = useState("");
   const [hobbyDescription, setHobbyDescription] = useState("");
-  const [image, setImage] = useState(null);
+  const [hobbyImage, setHobbyImage] = useState(null);
   const [currentSection, setCurrentSection] = useState('objetivos');
-  
-  // Estados para almacenar los valores de los objetivos y logros
   const [objetivosData, setObjetivosData] = useState([]);
   const [logrosData, setLogrosData] = useState([]);
 
-  const [previewImageUrl, setPreviewImageUrl] = useState(null);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (image) {
-      const newPreviewUrl = URL.createObjectURL(image);
-      setPreviewImageUrl(newPreviewUrl);
-      // Revocar el ObjectURL cuando cambie la imagen o cuando el componente se desmonte
-      return () => {
-        URL.revokeObjectURL(newPreviewUrl);
-      };
-    } else {
-      setPreviewImageUrl(null);
-    }
-  }, [image]);
 
   const handleEliminarObjetiveOLogro = (id) => {
     if (currentSection === 'objetivos') {
@@ -37,10 +21,10 @@ const NuevoHobbiePage = () => {
     }
   };
 
-  const handleImageUpload = (e) => {
+  const handleHobbyImageUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setImage(file); // Guarda el archivo en lugar del ObjectURL
+      setHobbyImage(file);
     }
   };
 
@@ -50,7 +34,7 @@ const NuevoHobbiePage = () => {
       title: '',
       description: '',
       tasks: [''],
-      image: image // Asegúrate de que sea un File o una URL válida
+      image: null
     };
 
     if (currentSection === 'objetivos') {
@@ -68,7 +52,7 @@ const NuevoHobbiePage = () => {
     const hobbyData = {
       hobbyName,
       hobbyDescription,
-      image,
+      hobbyImage,
       objetivosData,
       logrosData
     };
@@ -91,13 +75,13 @@ const NuevoHobbiePage = () => {
     <div className=" top-16 left-0 right-0 z-10 bg-white shadow border-b border-gray-200 py-4 px-6">
       <div className="space-x-4">
           <button 
-            className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+            className={`px-4 py-2 text-sm font-medium text-gray-700 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 ${currentSection === 'objetivos' ? 'bg-blue-100 text-blue-800 rounded-lg' : ''}`}
             onClick={() => handleNavClick('objetivos')}
           >
             Objetivos
           </button>
           <button 
-            className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+            className={`px-4 py-2 text-sm font-medium text-gray-700 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 ${currentSection === 'logros' ? 'bg-blue-100 text-blue-800 rounded-lg' : ''}`}
             onClick={() => handleNavClick('logros')}
           >
             Logros
@@ -114,8 +98,12 @@ const NuevoHobbiePage = () => {
           <div className="flex gap-6">
             <div className="flex-shrink-0">
               <label className="cursor-pointer">
-                <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
-                <img src={previewImageUrl || "https://via.placeholder.com/100"} alt="Cargar imagen" className="w-32 h-32 object-cover rounded-md" />
+                <input type="file" accept="image/*" onChange={handleHobbyImageUpload} className="hidden" />
+                {hobbyImage ? (
+                  <img src={URL.createObjectURL(hobbyImage)} alt="Cargar imagen" className="w-32 h-32 object-cover rounded-md" />
+                ) : (
+                  <img src="https://via.placeholder.com/100" alt="Cargar imagen" className="w-32 h-32 object-cover rounded-md" />
+                )}
                 <span className="block mt-2 text-sm text-gray-500">Cargar imagen</span>
               </label>
             </div>

@@ -1,21 +1,29 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Imagen from '../../assets/imagen.png';
 
-const HobbyCard = ({ title, description, link, onDelete }) => {
+const HobbyCard = ({ title, description, image, onDelete, onClick }) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
-    navigate(link);
+    onClick();
   };
+
+  // nos aseguramos que sea un url
+  const imageUrl = image instanceof File ? URL.createObjectURL(image) : image;
 
   return (
     <div
       className="bg-white rounded-lg shadow-md p-6 flex items-center cursor-pointer hover:shadow-lg transition-shadow"
       onClick={handleCardClick}
     >
-      <div className="flex-shrink-0 w-1/3 mr-6 flex items-center justify-center">
-        <img src={Imagen} height={130} alt='Hobby icon' className="w-2/3 h-2/4 object-contain" />
+      <div className="flex-shrink-0 mr-6">
+        <label className="cursor-pointer">
+          <img
+            src={imageUrl}
+            alt="Hobby icon"
+            className="w-32 h-32 object-cover rounded-md"
+          />
+        </label>
       </div>
       <div className="flex-grow w-2/3 flex justify-between items-start">
         <div>
