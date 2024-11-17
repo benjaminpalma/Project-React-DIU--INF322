@@ -3,8 +3,8 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useNavigate } from 'react-router-dom';
 
 const navigation = [
-  { name: 'Hobbies', href: '/hobbies', current: true },
-  { name: 'Communities', href: '/communities', current: false },
+  { name: 'Hobbies', href: '/hobbies' },
+  { name: 'Communities', href: '/communities'  },
 ];
 
 function classNames(...classes) {
@@ -12,18 +12,16 @@ function classNames(...classes) {
 }
 
 export default function Example() {
-  const navigate = useNavigate(); // Define navigate para redirección
+  const navigate = useNavigate();
   
   const handleNotificationClick = () => {
-    navigate('/notifications'); // Redirige a la página de notificaciones
+    navigate('/notifications');
   };
-  // Función para manejar el cierre de sesión
   const handleSignOut = () => {
-    navigate('/login'); // Redirige al formulario de inicio de sesión
+    navigate('/login');
   };
-
   const handleProfileClick = () => {
-    navigate('/profile'); // Navigate to the user profile component path
+    navigate('/profile');
   };
 
   return (
@@ -55,9 +53,8 @@ export default function Example() {
                   <a
                     key={item.name}
                     href={item.href}
-                    aria-current={item.current ? 'page' : undefined}
                     className={classNames(
-                      item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                      'text-gray-300 hover:bg-gray-700 hover:text-white',
                       'rounded-md px-3 py-2 text-sm font-medium',
                     )}
                   >
@@ -105,7 +102,7 @@ export default function Example() {
                 </MenuItem>
                 <MenuItem>
                   <button
-                    onClick={handleSignOut} // Llama a la función handleSignOut en vez de un enlace
+                    onClick={handleSignOut}
                     className="block w-full px-4 py-2 text-left text-sm text-gray-700"
                   >
                     Cerrar sesión
@@ -124,9 +121,8 @@ export default function Example() {
               key={item.name}
               as="a"
               href={item.href}
-              aria-current={item.current ? 'page' : undefined}
               className={classNames(
-                item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                'text-gray-300 hover:bg-gray-700 hover:text-white',
                 'block rounded-md px-3 py-2 text-base font-medium',
               )}
             >

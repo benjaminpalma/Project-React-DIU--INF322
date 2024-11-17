@@ -16,29 +16,27 @@ import UserProfile from './pages/communities/UserProfile';
 import NotificationsPage from './pages/alarma/NotificationsPage';
 
 import HobbiesPage from './pages/hobbies/HobbiesPage';
-import HobbyX from './pages/hobbies/HobbyX';
-import NewHobby from './pages/hobbies/NewHobby';
+import HobbyXPage from './pages/hobbies/HobbyXPage';
+import NewHobbyPage from './pages/hobbies/NewHobbyPage';
 
-//import HomePage from './pages/HomePage';
 import Login from './pages/login/Login';
 import Signup from './pages/login/Signup';
 import PasswordRecovery from './pages/login/PasswordRecovery';
 import Profile from './pages/profile/perfil'
 
+
 const App = () => {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
-	      <header className="fixed inset-x-0 top-0 z-50 bg-white">
-          <Navbar />
-        </header>
+        <Navbar />
         <main className="flex-1 p-6 mt-16 bg-gray-100">
           <Routes>
             <Route path="/" element={<Communities />} />
             <Route path="/communities" element={<Communities />} />
             <Route path="/hobbies" element={<HobbiesPage />} />
-            <Route path="/hobbies/:hobbyId" element={<HobbyX />}/>
-            <Route path="/nuevo-hobbie" element={<NewHobby />} />
+            <Route path="/hobbies/:hobbyKey" element={<HobbyXPage />}/>
+            <Route path="/nuevo-hobbie" element={<NewHobbyPage />} />
             <Route path="/notifications" element={<NotificationsPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
